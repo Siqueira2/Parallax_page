@@ -1,0 +1,211 @@
+@font-face {
+    font-family: Aeonik;
+    src: url(assets/Aeonik/AeonikTRIAL-Regular.otf);
+    font-weight: normal;
+}
+@font-face {
+    font-family: Aeonik;
+    src: url(assets/Aeonik/AeonikTRIAL-Bold.otf);
+    font-weight: bold;
+}
+
+:root {
+    --primary: #2b1055;
+    --sec: #7597de;
+    --text: #fff;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Aeonik";
+    font-weight: normal;
+    scroll-behavior: smooth;
+}
+
+body {
+    min-height: 100vh;
+    background-image: linear-gradient(to bottom, var(--primary), var(--sec));
+}
+
+nav {
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    padding: 20px 100px;
+    z-index: 99999;
+}
+
+nav .logo {
+    text-decoration: none;
+    color: var(--text);
+    font-size: 2rem;
+    font-weight: bold;
+}
+
+nav #menu {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 2rem;
+}
+
+nav #menu li{
+    list-style: none;
+}
+
+nav #menu li a {
+    text-decoration: none;
+    color: var(--text);
+    padding: 5px 8px;
+    border-radius: 20px;
+    transition: all ease-in .1s;
+}
+nav #menu li a:hover {
+    color: var(--primary);
+    background-color: var(--text);
+}
+
+#hamburguer-menu {
+    display: none;
+    cursor: pointer;
+}
+
+.item1, .item2, .item3 {
+    background: var(--text);
+    width: 30px;
+    height: 3px;
+    margin: 5px auto;
+    transition: all ease-in .2s;
+}
+
+.first {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100vh;
+    padding: 100px;
+    overflow: hidden;
+}
+
+.first::before {
+    content: '';
+    background-image: linear-gradient(to top, var(--primary), transparent);
+    height: 100px;
+    width: 100%;
+    z-index: 9999;
+    position: absolute;
+    bottom: 0;
+}
+
+.first img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    pointer-events: none;
+}
+
+.first #moon {
+    mix-blend-mode: screen;
+}
+
+#headline {
+    position: absolute;
+    color: var(--text);
+    white-space: nowrap; /*comprime o espaço em branco e não permite a quebra de linha*/
+    font-size: 7rem;
+    font-weight: bold;
+    z-index: 9;
+}
+
+#button {
+    display: inline-block;
+    color: var(--primary);
+    font-size: 1.2rem;
+    padding: 6px 12px;
+    border: 1px solid var(--text);
+    border-radius: 20px;
+    z-index: 9;
+    transition: all ease-in-out .2s;
+    transform: translateY(150px);
+}
+
+#button:hover {
+    transform: scale(1.2);
+}
+
+#mountains-front {
+    z-index: 10;
+}
+
+.second {
+    background-color: var(--primary);
+    color: var(--text);
+    padding: 5% 15%;
+}
+
+.second h2 {
+    font-weight: bold;
+    font-size: 2rem;
+    margin-bottom: 30px;
+}
+
+.second p {
+    font: normal 15px Arial, Helvetica, sans-serif;
+}
+
+@media (max-width:785px) {
+    nav {
+        position: fixed;
+        padding: 20px 20px;
+    }
+
+    #hamburguer-menu {
+        display: block;
+        position: fixed;
+        right: 50px;
+    }
+
+    #hamburguer-menu.active div:nth-child(1){
+        transform: translateY(8px) rotate(45deg);
+    }
+
+    #hamburguer-menu.active div:nth-child(2){
+        opacity: 0;
+    }
+
+    #hamburguer-menu.active div:nth-child(3){
+        transform: translateY(-8px) rotate(135deg);
+    }
+
+    #menu{
+        position: fixed;
+        right: -100%;
+        flex-direction: column;
+        width: 100%;
+        height: 100%;
+        padding: 40% 0;
+        top: 0;
+        background-color: var(--primary);
+        transition: all .3s;
+    }
+
+    #menu.active {
+        right: 0;
+    }
+
+    #headline {
+        font-size: 6rem;
+    }
+}
